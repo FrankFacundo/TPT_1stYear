@@ -1,0 +1,50 @@
+Exo 1
+
+utiliser -c pour compter les nombres de lignes e.j : 	egrep '^[^a]*$' liste1 -c
+
+a :
+	egrep '^[^a]*$' liste1
+	egrep '^b*$' liste1
+b : 
+	egrep '^b*$' liste1
+c :
+	egrep '^a*b*$' liste1
+d : 
+	egrep '^a+b+$' liste1
+e : 
+	egrep '^b*(ab+)*$' liste1 
+f :
+	egrep '^b*ab*(ab*ab*ab*)*$' liste1
+
+remarques : 
+Si on a que des 'a'
+	^(aa)*$ 	pair
+	^(aaa)*$ 	multiple 3
+	^(aa)*a$ 	impair
+	^(aaa)*a$ 	congru a 1 module 3
+
+Exo 2
+
+a : 
+	egrep '^[a-zA-Z]*$' liste2
+b :
+	egrep '^a.*z$' liste2
+
+	egrep '^a' liste2 | egrep 'z$'
+	remarque : | concatenation de egrep 
+c : 
+	egrep '\*' liste2	//contiennent au moins un asterisque
+	
+	egrep '\*.*\*' liste2	//contient au moins deux asterisques 
+
+	egrep '^[^*]*\*[^*]*\*[^*]*$' 
+	// [^*] n'importe quel caractere sauf '*' 
+	// [^*]* n'importe quel caractere sauf '*' repete avec x fois 
+d : 
+	egrep '^.{6}$' liste2
+
+	egrep '^.{4,8}$' liste2
+
+	egrep '(u.*){3}' liste2
+
+	egrep '^[^u]*(u[^u]*){6}$' liste2
