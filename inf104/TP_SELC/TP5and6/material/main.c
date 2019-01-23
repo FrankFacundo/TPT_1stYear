@@ -132,9 +132,18 @@ int main(int argc, char*argv[]) {
 
 void read_file_content(Student_t * array, FILE * file){
 
-  /* TODO: implement this function */
-  printf("read_file_content: Not Implemented Yet\n");
-  exit(-1);
+  int ret = 0;
+  do {
+    ret = fscanf(file, "%s %s %d",
+    array[number_of_students].lastname,
+    array[number_of_students].firstname,
+    &array[number_of_students].group);
+    if (ret == 3)
+      number_of_students++;
+    else
+      printf("Line  %d : error or end of file \n", number_of_students);
+  } while(ret != EOF );
+  number_of_students--;
 
 }
 
@@ -145,9 +154,10 @@ void read_file_content(Student_t * array, FILE * file){
 Link_t * new_link(Student_t student){
   Link_t *Ptr;
 
-  /* TODO: implement this function */
-  printf("new_link: Not Implemented Yet\n");
-  exit(-1);
+  Ptr = malloc (sizeof(Link_t));
+  if (Ptr == NULL) perror("Error when using malloc\n");
+  Ptr->student = student;
+  Ptr->next = NULL;
 
   return Ptr;
 }
@@ -158,13 +168,10 @@ Link_t * new_link(Student_t student){
 * Returns the address of the first element of the list.
 ********************************************************/
 Link_t * chain(Link_t * beginning, Link_t * new_link){
-  Link_t *Ptr;
-
-  /* TODO: implement this function */
-  printf("chain: Not Implemented Yet\n");
-  exit(-1);
-
-  return Ptr;
+  //Link_t *Ptr;
+  //Ptr = new_link;
+  new_link->next = beginning;
+  return new_link;
 }
 
 /********************   display_linked_list   *******************
@@ -173,9 +180,15 @@ Link_t * chain(Link_t * beginning, Link_t * new_link){
 ********************************************************/
 void display_linked_list(Link_t * list){
 
-  /* TODO: implement this function */
-  printf("display_linked_list: Not Implemented Yet\n");
-  exit(-1);
+  int i=0;
+  while (list != NULL) {
+    printf("Name : %s, Firstname : %s, Group : %d, (index) : %d, address of next link : %p\n",
+      list->student.lastname, list->student.firstname, list->student.group,
+      i,(int*)list->next
+      );
+    list = list->next;
+    i++;
+  }
 
 }
 
@@ -189,12 +202,12 @@ void display_linked_list(Link_t * list){
 ********************************************************/
 Link_t * search (Link_t * beginning, char * name_to_search)
 {
-  Link_t * found_link;
+  Link_t * found_link = beginning;
 
-  /* TODO: implement this function */
-  printf("search: Not Implemented Yet\n");
-  exit(-1);
-
+  while (found_link != NULL) {
+    if (strcmp(found_link->student.lastname, name_to_search) == 0) break;
+    found_link = found_link->next;
+  }
   return found_link;
 }
 

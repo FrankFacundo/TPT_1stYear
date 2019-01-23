@@ -1,0 +1,2 @@
+linked-list.o: src/linked-list.c src/link-types.h src/linked-list.h
+main.o: src/main.c src/link-types.h src/linked-list.h

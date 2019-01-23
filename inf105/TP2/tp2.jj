@@ -1,0 +1,58 @@
+// Options pour JavaCC
+options { LOOKAHEAD=1; FORCE_LA_CHECK=true; }
+
+// Fonction principale
+PARSER_BEGIN(Calculatrice)
+public class Calculatrice
+{
+    public static void main(String args[]) throws ParseException
+    {
+        Calculatrice parser = new Calculatrice(System.in);
+        parser.mainloop();
+    }
+}
+PARSER_END(Calculatrice)
+
+// CaractÃ¨res Ã  ignorer (espaces)
+SKIP: { " " | "\r" | "\t" }
+
+// DÃ©finitions pour le lexeur
+TOKEN:
+{
+    < NUMBER: (<DIGIT>)+ ("." (<DIGIT>)*)? >  // Un nombre en dÃ©cimal
+|   < DIGIT: ["0"-"9"] >  // Un chiffre
+|   < EOL: "\n" >  // Fin de ligne
+}
+
+// Boucle principale: lire des expressions sur une ligne jusqu'Ã  fin de fichier
+//     mainloop â†’ (expression <EOL>)* <EOF>
+// (<EOL> est dÃ©fini ci-dessus, <EOF> est reconnu automatiquement)
+void mainloop():
+{ double a; }
+{
+    (
+      a=expression() <EOL> { System.out.println(a); }
+    )*
+    <EOF>
+}
+
+// Expression (axiome de la grammaire de la calculatrice)
+//     expression â†’ element ( "+" element | "-" element | "*" element | "/" element )*
+double expression():
+{ double a,b; }
+{
+    a=element()
+    (
+      "+" b=element() { a += b; }
+    | "-" b=element() { a -= b; }
+    | "*" b=element() { a *= b; }
+    | "/" b=element() { a /= b; }
+    )* { return a; }
+}
+
+// Ã‰lÃ©ment d'un calcul
+double element():
+{ Token t; }
+{
+    t=<NUMBER> { return Double.parseDouble(t.toString()); }
+}

@@ -11,14 +11,14 @@ int main(int argc, char *argv[]) {
   float f2=1.2;
   // use swap to put value of f1 in f2 and vice-versa
   // use printf to display values of f1 and f2
-  
+
   return 0;
 }
 
 int * alloc (int val){
    int tab[20];
    // initialize elements of tab with value val
-
+   
    return tab;
 }
 

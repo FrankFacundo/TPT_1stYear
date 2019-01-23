@@ -78,10 +78,34 @@ int main(int argc, char *argv[])
 
 int my_strcmp(char * str1, char * str2)
 {
-  return -1;
+  int i=0;
+  while (str1[i] != '\0' && str2[i] != '\0') {
+    if (str1[i] < str2[i] ) {
+      return -1;
+    }
+    else if (str1[i] > str2[i] ) {
+      return 1;
+    i++;
+    }
+  }
+
+    return 0;
+
 }
 
 void sort_string_array(char ** tab, int nb_of_elements)
 {
+  int i,n = nb_of_elements ,k;
+
+  for (size_t i = 1 ; i < n ; i++) {
+    for (k = i; k > 0 && (my_strcmp(tab(k),tab(k-1)) == -1) ; k--) {
+      char * tmp;
+      tmp = tab(k-1);
+      tab(k-1) = tab(k);
+      tab(k) = tmp;
+    }
+  }
+}
+
 
 }

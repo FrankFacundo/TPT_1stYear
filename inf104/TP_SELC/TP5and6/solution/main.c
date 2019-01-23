@@ -162,7 +162,7 @@ void read_file_content(Student_t * array, FILE * file){
 * Returns the adress of the new link.
 ********************************************************/
 Link_t * new_link(Student_t student){
-  Link_t *Ptr;
+  Link_t * Ptr;
 
   Ptr = malloc(sizeof(Link_t));
 	if (Ptr == NULL ) perror("Error occured when using malloc");
