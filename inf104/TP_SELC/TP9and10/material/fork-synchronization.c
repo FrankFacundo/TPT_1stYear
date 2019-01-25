@@ -15,6 +15,7 @@ int main () {
       printf ("\t\t\t\tCHILD, PID: %d \n\t\t\t\tPARENT, PID: %d \n",
 	      (int) getpid(),(int) getppid() );
       printf("\t\t\t\tGoing for a 30 secondes sleep...\n");
+      int i = 5/0;
       sleep (30);
       printf
            ("\t\t\t\tJust wok up,\n\t\t\t\tI finish executing EXIT(7)\n");
