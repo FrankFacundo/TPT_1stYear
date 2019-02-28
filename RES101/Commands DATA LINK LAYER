@@ -1,0 +1,13 @@
+ 1995  ip a
+ 1996  ip link set br0 
+ 1997  brctl add br0
+ 1998  ip link add br0 type bridge 
+ 1999  sudo ip link add br0 type bridge 
+ 2000  ip a
+ 2001  ip link set br0 up 
+ 2002  sudo ip link set br0 up 
+ 2003  ip a
+ 2004  sudo apt-get install brigde-utils
+ 2005  sudo apt-get install bridge-utils
+ 2006  brctl show
+
