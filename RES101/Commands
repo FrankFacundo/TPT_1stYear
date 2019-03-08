@@ -1,0 +1,28 @@
+Affiche l'état du protocol Spanning Tree Protocol:
+		brctl showstp br0
+Modifier Coût du chemin: 		
+		brctl setpathcost br0 ethX YY 
+Modifier la priorité d'un switch:
+		brctl setbridgeprio br0 XXX
+Désactiver un lien:
+		ifconfig ethX down
+Activer un lien: 
+		ifconfig ethX up
+		brctl addif br0 ethX
+L’intervalle entre Hello (Hello Time):
+		brctl sethello br0 XX 
+Le délai d’expiration associé à une interface (Max Age): 
+		brctl setmaxage br0 XX
+Le temps d’apprentissage (Forward Delay):
+		brctl setfd br0 XX
+Activer STP:
+		brctl stp br0 on
+Desactiver STP:
+		brctl stp br0 off
+
+Capture de traffic:
+		tcpdump -i eth0 -w /hostlab/TP1-PC1-eth0.pcap
+
+Broadcast : 
+		ping -b [ip broadcast]
+
