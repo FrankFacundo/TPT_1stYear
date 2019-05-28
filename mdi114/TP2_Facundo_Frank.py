@@ -8,6 +8,7 @@ Created on Mon Mar 11 13:58:54 2019
 
 import numpy.random as npr
 import numpy as np
+import matplotlib as plt
 
 #EXO4 Simulation de loi a denxite par la methode de rejet
 
@@ -67,7 +68,7 @@ from pylab import*
 import pylab as pylab
 lamb=1./3
 tableau=-1/lamb*log(1-random(10000))
-m1=pylab.hist(tableau,bins=linspace(0,6/lamb,61),normed=True)
+m1=plt.hist(tableau,bins=linspace(0,6/lamb,61),normed=True)
 x=linspace(0,6./lamb,61)
 y=lamb*exp(-lamb*x)
 plot(x,y,color='red')
